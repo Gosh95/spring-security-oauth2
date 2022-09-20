@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>인증 성공</title>
+</head>
+<body>
+<div>
+    <div>
+        <div>
+            <h2>인증 완료 페이지</h2>
+        </div>
+        <form>
+            <div>
+                <span>이메일</span>
+                <p th:text="${#authentication.name}"></p>
+            </div>
+            <div>
+                <span>인증 성공</span>
+                <p th:text="${#authentication.authenticated}"></p>
+            </div>
+            <div>
+                <span>사용자 권한</span>
+                <p th:text="${#authentication.authorities[0]}"></p>
+            </div>
+        </form>
+    </div>
+    <div>
+        <a href="/logout">로그아웃</a>
+    </div>
+</div>
+</body>
+</html>

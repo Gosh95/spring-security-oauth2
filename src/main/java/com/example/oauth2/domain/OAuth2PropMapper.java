@@ -4,6 +4,7 @@ import static com.example.oauth2.domain.OAuth2Props.EMAIL;
 import static com.example.oauth2.domain.OAuth2Props.GOOGLE;
 import static com.example.oauth2.domain.OAuth2Props.KAKAO;
 import static com.example.oauth2.domain.OAuth2Props.KAKAO_ACCOUNT;
+import static com.example.oauth2.domain.OAuth2Props.PICTURE;
 import static com.example.oauth2.domain.OAuth2Props.PROFILE;
 import static com.example.oauth2.domain.OAuth2Props.PROFILE_IMAGE;
 import static com.example.oauth2.domain.OAuth2Props.THUMBNAIL_IMAGE_URL;
@@ -42,6 +43,10 @@ public class OAuth2PropMapper {
 	}
 
 	private static Map<String, String> getGoogleProps(Map<String, Object> attributes) {
-		return Collections.emptyMap();
+		var props = new HashMap<String, String>();
+		props.put(EMAIL, attributes.get(EMAIL).toString());
+		props.put(PROFILE_IMAGE, attributes.get(PICTURE).toString());
+
+		return props;
 	}
 }

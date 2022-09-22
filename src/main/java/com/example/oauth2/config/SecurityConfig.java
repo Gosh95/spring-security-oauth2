@@ -33,7 +33,7 @@ public class SecurityConfig {
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
 		return web -> web.ignoring()
-			.requestMatchers(PathRequest.toStaticResources().atCommonLocations(), PathRequest.toH2Console());
+			.requestMatchers(PathRequest.toStaticResources().atCommonLocations());
 	}
 
 	@Bean

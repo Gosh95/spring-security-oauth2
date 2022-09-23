@@ -1,0 +1,37 @@
+language: java
+jdk:
+  - openjdk17
+
+branches:
+  only:
+    - main
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+
+script: "./gradlew clean build"
+
+before_deploy:
+  - zip -r spring-security-oauth2 *
+  - mkdir -p deploy
+  - mv spring-security-oauth2.zip deploy/spring-security-oauth2.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: aws-beginner-springboot-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
+    on:
+      all_branches: true
+
+notifications:
+  email:
+    recipients:
+      - $MY_EMAIL

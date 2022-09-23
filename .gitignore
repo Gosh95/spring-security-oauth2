@@ -39,4 +39,3 @@ out/
 src/main/resources/application-security.yml
 src/main/resources/application-rds.yml
 .travis.yml
-appspec.yml
